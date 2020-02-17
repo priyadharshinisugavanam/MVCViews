@@ -1,0 +1,33 @@
+﻿@model Restaurant.Entity.RestaurantEntity
+
+@{
+    ViewBag.Title = "ViewAllDetails";
+}
+<h1>Temp Data</h1>
+<table border="1">
+    <tr>
+        <td>
+            Restaurant Name
+        </td>
+        <td>
+            Restaurant Type
+        </td>
+        <td>
+            Location
+        </td>
+    </tr>
+    @foreach (Restaurant.Entity.RestaurantEntity item in (List<Restaurant.Entity.RestaurantEntity>)TempData["Restaurant"])
+    {
+        <tr>
+            <td>
+                @item.RestaurantName
+            </td>
+            <td>
+                @item.RestaurantType
+            </td>
+            <td>
+                @item.Location
+            </td>
+        </tr>
+    }
+</table>

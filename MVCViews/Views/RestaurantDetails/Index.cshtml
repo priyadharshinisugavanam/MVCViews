@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Restaurant.Entity.RestaurantEntity>
+@{
+    ViewBag.Title = "Index";
+}
+<h1>Index</h1>
+@Html.ActionLink("Create new Restaurant", "Create")
+<br />
+@if (TempData["Message"] != null)
+{
+    @Html.Label((string)TempData["Message"])
+}
+@foreach (Restaurant.Entity.RestaurantEntity restaurantEntity in @Model)
+{
+    <table border="1">
+        <tr>
+            <td>
+                @restaurantEntity.RestaurantName
+            </td>
+            <td>
+                @restaurantEntity.RestaurantType
+            </td>
+            <td>
+                @restaurantEntity.Location
+            </td>
+
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { restaurantName = restaurantEntity.RestaurantName })
+                @Html.ActionLink("Delete", "Delete", new { restaurantName = restaurantEntity.RestaurantName })
+            </td>
+
+        </tr>
+
+    </table>
+}
+
+
+

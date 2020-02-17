@@ -1,0 +1,46 @@
+﻿@model Restaurant.Entity.RestaurantEntity
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+@using (Html.BeginForm("Create", "RestaurantDetails", FormMethod.Post))
+{
+    <table cellpadding="10">
+        <tr>
+            <td>
+                @Html.LabelFor(Model => Model.RestaurantName)
+            </td>
+            <td>
+                @Html.TextBoxFor(Model => Model.RestaurantName)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(Model => Model.RestaurantType)
+            </td>
+            <td>
+                @Html.EditorFor(Model => Model.RestaurantType)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(Model => Model.Location)
+            </td>
+            <td>
+                @Html.EditorFor(Model => Model.Location)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.ActionLink("Back to List", "Index")
+            </td>
+            <td>
+                <input type="submit" id="Add" />
+            </td>
+
+        </tr>
+    </table>
+}
+
