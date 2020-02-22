@@ -46,10 +46,8 @@ namespace MVCView.Controllers
         }
         [HttpPost]
         [ActionName("Create")]
-        public ActionResult CreateUpdate()
+        public ActionResult CreateUpdate([Bind(Exclude ="Location")]RestaurantEntity restaurantEntity)
         {
-            RestaurantEntity restaurantEntity = new RestaurantEntity();
-            TryUpdateModel(restaurantEntity);
             restaurantRepositary.AddRestaurant(restaurantEntity);
             TempData["Message"] = "Restaurant Added";
             return RedirectToAction("Index");
@@ -68,10 +66,8 @@ namespace MVCView.Controllers
         }
         [HttpPost]
         [ActionName("Update")]
-        public ActionResult UpdateTry()
+        public ActionResult UpdateTry([Bind(Include = "RestaurantName,RestaurantType")] RestaurantEntity restaurantEntity)
         {
-            RestaurantEntity restaurantEntity = new RestaurantEntity();
-            UpdateModel(restaurantEntity);
             restaurantRepositary.UpdateRestaurant(restaurantEntity);
             TempData["Message"] = "Restaurant Updated";
             return RedirectToAction("Index");
