@@ -1,4 +1,5 @@
-﻿using Restaurant.DAL;
+﻿using MVCViews;
+using Restaurant.DAL;
 using Restaurant.Entity;
 using System;
 using System.Collections.Generic;
@@ -8,19 +9,26 @@ using System.Web.Mvc;
 
 namespace MVCView.Controllers
 {
+    [HandleError]
     public class RestaurantDetailsController : Controller
     {
         // GET: RestaurantDetails
         RestaurantRepositary restaurantRepositary = new RestaurantRepositary();
+       
         public ViewResult Index()
         {
-
             IEnumerable<RestaurantEntity> restaurants = restaurantRepositary.DisplayRestaurant();
             return View(restaurants);
         }
+        [ErrorHandler]
+        
+        public ViewResult ErrorHandeling()
+        {
+            throw new Exception("Sorry this content is missing");
+        }
+        
         public ViewResult RestaurantDetailsDisplay()
         {
-
             IEnumerable<RestaurantEntity> restaurants = restaurantRepositary.DisplayRestaurant();
             ViewBag.RestaurantDetails = restaurants;
             return View();
@@ -72,6 +80,7 @@ namespace MVCView.Controllers
             TempData["Message"] = "Restaurant Updated";
             return RedirectToAction("Index");
         }
+       
 
     }
 }
